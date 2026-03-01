@@ -165,7 +165,7 @@ try:
                     invia_telegram(
                         f"🔔 <b>Passaporto disponibile!</b>\n"
                         f"📅 Prima data: <b>{data_utile_str}</b>\n"
-                        f"🏛 Questura di Como\n"
+                        f"🏛 Questura di {primo['comune']} - {primo['indrizzo']} \n"
                         f"⏰ Rilevato alle {now_str}"
                     )
 
@@ -177,7 +177,7 @@ try:
                         f"📉 <b>Data migliorata!</b>\n"
                         f"📅 Nuova: <b>{data_utile_str}</b>\n"
                         f"📆 Precedente: <b>{ts_to_date(prima_data_trovata_ms)}</b>\n"
-                        f"🏛 Questura di Como\n"
+                        f"🏛 Questura di {primo['comune']} - {primo['indrizzo']} \n"
                         f"⏰ Rilevato alle {now_str}"
                     )
                     prima_data_trovata_ms = giorno_ms
@@ -191,3 +191,4 @@ try:
 
 except KeyboardInterrupt:
     print("\n⏹️ Monitor fermato dall'utente")
+
