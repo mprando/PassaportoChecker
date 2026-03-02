@@ -152,6 +152,8 @@ try:
                 primo = elenco[0]
                 giorno_ms = primo["giorno"]
                 data_utile_str = f"{ts_to_date(giorno_ms)} {primo['ora']}"
+                comune = primo["comune"]
+                indirizzo = primo["indrizzo"]
 
                 # Prima volta → memorizza riferimento
                 if prima_data_trovata_ms is None:
@@ -165,7 +167,7 @@ try:
                     invia_telegram(
                         f"🔔 <b>Passaporto disponibile!</b>\n"
                         f"📅 Prima data: <b>{data_utile_str}</b>\n"
-                        f"🏛 Questura di {primo['comune']} - {primo['indrizzo']} \n"
+                        f"🏛 Questura di {comune} - {indirizzo} \n"
                         f"⏰ Rilevato alle {now_str}"
                     )
 
@@ -177,7 +179,7 @@ try:
                         f"📉 <b>Data migliorata!</b>\n"
                         f"📅 Nuova: <b>{data_utile_str}</b>\n"
                         f"📆 Precedente: <b>{ts_to_date(prima_data_trovata_ms)}</b>\n"
-                        f"🏛 Questura di {primo['comune']} - {primo['indrizzo']} \n"
+                        f"🏛 Questura di {comune} - {indirizzo} \n"
                         f"⏰ Rilevato alle {now_str}"
                     )
                     prima_data_trovata_ms = giorno_ms
@@ -191,4 +193,5 @@ try:
 
 except KeyboardInterrupt:
     print("\n⏹️ Monitor fermato dall'utente")
+
 
